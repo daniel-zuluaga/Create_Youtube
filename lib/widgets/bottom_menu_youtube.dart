@@ -1,6 +1,5 @@
 import 'package:create_youtube/pages/main_page.dart';
 import 'package:create_youtube/pages/shorts_video.dart';
-import 'package:create_youtube/pages/suscripciones_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -18,22 +17,22 @@ class _BotomMenuYoutubeState extends State<BotomMenuYoutube> {
       items: const [
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.home, 
+            Icons.home,
             size: 30,
             ),
           label: "Principal",
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            FontAwesomeIcons.compass,
+            Icons.video_collection_outlined, 
             size: 30,
           ),
           label: "Explorar",
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.add_circle_outline_outlined,
-            size: 50,
+            Icons.add_circle_outline_rounded,
+            size: 30,
           ),
           label: "",
         ),
@@ -46,9 +45,9 @@ class _BotomMenuYoutubeState extends State<BotomMenuYoutube> {
         ),
         BottomNavigationBarItem(
           icon: Icon(
-            Icons.video_library_outlined,
-            size: 30,
-            ),
+            Icons.library_add_outlined,
+            size: 30
+          ),
           label: "Biblioteca",
         ),
       ],
@@ -57,22 +56,28 @@ class _BotomMenuYoutubeState extends State<BotomMenuYoutube> {
       onTap: (index) {
         setState(() {
           _selectIndex = index;
+
           switch (_selectIndex) {
             case 0:
-              Navigator.pushNamed(context, MainPage.id);
+              //Navigator.pushNamed(context, PrincipalPage.id);
+              Navigator.pushReplacementNamed(context, MainPage.id);
               break;
-
             case 1:
-              Navigator.pushNamed(context, ShortsVideo.id);
+              //Navigator.pushNamed(context, ExplorePage.id);
+              Navigator.pushReplacementNamed(context, ShortsVideo.id);
               break;
-
             case 2:
-              Navigator.pushNamed(context, SuscripcionesPage.id);
+              MaterialPage(
+                  child: Container(
+                color: Colors.red,
+                height: 200.0,
+                width: 200.0,
+              ));
               break;
             default:
           }
-          
-          });
         });
-      }
+      },
+    );
   }
+}
