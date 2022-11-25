@@ -1,4 +1,4 @@
-import 'package:create_youtube/router/app_router.dart';
+import 'package:create_youtube/router/router.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(const MyApp());
@@ -14,10 +14,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
         
       ),
-      initialRoute: AppRoutes.initialRoute,
-      routes: AppRoutes.getAppRoutes(),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
-
+      initialRoute: MainPage.id,
+      routes: {
+        MainPage.id: (_) => MainPage(),
+        ShortsVideo.id: (_) => ShortsVideo(),
+        CreateNewVideoYoutube.id: (_) => CreateNewVideoYoutube(),
+        SuscripcionesPage.id:(_) => SuscripcionesPage() 
+      },
     );
   }
 }

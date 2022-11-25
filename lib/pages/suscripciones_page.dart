@@ -1,3 +1,4 @@
+import 'package:create_youtube/widgets/bottom_menu_youtube.dart';
 import 'package:flutter/material.dart';
 
 class SuscripcionesPage extends StatelessWidget {
@@ -7,14 +8,18 @@ class SuscripcionesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Image.asset("assets/image/fondo_flutter.png"),
-            Text("Sucripciones del canal !!! :)", style: TextStyle(fontSize: 50),)
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset("assets/image/fondo_flutter.png"),
+              Text("Sucripciones del canal !!! :)", style: TextStyle(fontSize: 50),)
+            ],
+          ),
         ),
       ),
+      bottomNavigationBar: BotomMenuYoutube(),
+
     );
   }
 }
