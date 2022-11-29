@@ -1,4 +1,4 @@
-import 'package:create_youtube/widgets/bottom_menu_youtube.dart';
+import 'package:create_youtube/src/widgets/bottom_menu_youtube.dart';
 import 'package:flutter/material.dart';
 
 class ShortsVideo extends StatelessWidget {

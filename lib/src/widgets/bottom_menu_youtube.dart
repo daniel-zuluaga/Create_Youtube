@@ -1,5 +1,7 @@
-import 'package:create_youtube/pages/main_page.dart';
-import 'package:create_youtube/pages/shorts_video.dart';
+import 'package:create_youtube/src/pages/create_new_video_youtube.dart';
+import 'package:create_youtube/src/pages/main_page.dart';
+import 'package:create_youtube/src/pages/shorts_video.dart';
+import 'package:create_youtube/src/pages/suscripciones_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -32,7 +34,7 @@ class _BotomMenuYoutubeState extends State<BotomMenuYoutube> {
         BottomNavigationBarItem(
           icon: Icon(
             Icons.add_circle_outline_rounded,
-            size: 30,
+            size: 40,
           ),
           label: "",
         ),
@@ -68,13 +70,19 @@ class _BotomMenuYoutubeState extends State<BotomMenuYoutube> {
               break;
             case 2:
               MaterialPage(
-                  child: Container(
-                color: Colors.red,
-                height: 200.0,
-                width: 200.0,
-              ));
+                    child: Container(
+                  color: Colors.red,
+                  height: 200.0,
+                  width: 200.0,
+                ));
               break;
+
+            case 3:
+              Navigator.pushReplacementNamed(context, SuscripcionesPage.id);
+              break;
+            
             default:
+              
           }
         });
       },

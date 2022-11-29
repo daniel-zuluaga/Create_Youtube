@@ -1,4 +1,5 @@
-import 'package:create_youtube/widgets/bottom_menu_youtube.dart';
+import 'package:create_youtube/src/models/video_card.dart';
+import 'package:create_youtube/src/widgets/bottom_menu_youtube.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,7 +12,52 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
+
+  List<VideoCard> videos = [];  
+
+  @override
+  void initState() {
+    videos.addAll([
+      VideoCard(duration: "6:30", title: "Miniatura de mi juego para Youtube", 
+      views: "12798361975", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "3:45", title: "Miniatura de mi juego para Youtube", 
+      views: "10045", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "2:25", title: "Miniatura de mi juego para Youtube", 
+      views: "100", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "1:10", title: "Miniatura de mi juego para Youtube", 
+      views: "134", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "6:45", title: "Miniatura de mi juego para Youtube", 
+      views: "90", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "45:45", title: "Miniatura de mi juego para Youtube", 
+      views: "67593", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "8:45", title: "Miniatura de mi juego para Youtube", 
+      views: "109830917", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "7:45", title: "Miniatura de mi juego para Youtube", 
+      views: "8382", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "5:45", title: "Miniatura de mi juego para Youtube", 
+      views: "3916912", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "9:45", title: "Miniatura de mi juego para Youtube", 
+      views: "322179", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "9:45", title: "Miniatura de mi juego para Youtube", 
+      views: "322179", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+      VideoCard(duration: "9:45", title: "Miniatura de mi juego para Youtube", 
+      views: "322179", nameChannel: "DanielZusaVideogames", 
+      thumbnail: Image.asset("assets/image/fondo_flutter.png")),
+    ]);
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +124,7 @@ class _MainPageState extends State<MainPage> {
               SliverList(
                   delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int position) {
+                  String viewsCompressed = videos[position].viewsVideo(int.parse(videos[position].views));
                   return Container(
                     margin: EdgeInsets.all(8),
                     child: Stack(
@@ -104,9 +151,9 @@ class _MainPageState extends State<MainPage> {
                                 const SizedBox(
                                   width: 20,
                                 ),
-                                const Expanded(
+                                Expanded(
                                   child: Text(
-                                    "Miniatura de mi juego para Youtube",
+                                    "${videos[position].title}",
                                     maxLines: 2,
                                     textAlign: TextAlign.start,
                                     overflow: TextOverflow.ellipsis,
@@ -127,19 +174,17 @@ class _MainPageState extends State<MainPage> {
                               ],
                             ),
                             const SizedBox(
-                              height: 12,
+                              height: 8,
                             ),
 
 
 
                             Row(
-                              children: const [
+                              children: [
                                 SizedBox(
                                   width: 70,
                                 ),
-                                Text("DanielZusa"),
-                                Text("1M Visitas"),
-                                Text("Hace 5 dia")
+                                Text("DanielZusa - " + "$viewsCompressed" + " Visitas - Hace 5 dia")
 
                               ],
                             ),
@@ -148,9 +193,9 @@ class _MainPageState extends State<MainPage> {
                         ),
                         Positioned(
                           right: 5,
-                          bottom: 80,
+                          bottom: 85,
                           child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
                             color: Colors.black87,
                             child: const Text(
                               "8:40",
@@ -164,7 +209,7 @@ class _MainPageState extends State<MainPage> {
                     ),
                   );
                 },
-                childCount: 10,
+                childCount: videos.length,
               ))
             ],
           ),
